@@ -1,7 +1,7 @@
 business-rules
 ==============
 
-[![Build Status](https://travis-ci.org/venmo/business-rules.svg?branch=master)](https://travis-ci.org/venmo/business-rules)
+[![build-status-image]][travis]
 
 This is a fork of [business-rules][business-rules-lib] from version 1.0.1. As original project is not updated for last few years I created this fork to merge fixes and new features.
 
@@ -309,4 +309,6 @@ $ pip install -r dev-requirements.txt
 $ nosetests
 ```
 
-business-rules-lib]: https://github.com/venmo/business-rules
+[business-rules-lib]: https://github.com/venmo/business-rules
+[build-status-image]: https://travis-ci.org/maciejpolanczyk/business-rules-ext.svg?branch=master
+[travis]: https://travis-ci.org/maciejpolanczyk/business-rules-ext?branch=master

@@ -19,7 +19,9 @@ class ActionsResultsClassTests(TestCase):
         )
 
     def test_should_get_only_first_action_result(self):
-        result = run_all(**self._get_params_for_run_all(), stop_on_first_trigger=True)
+        params_as_dict = self._get_params_for_run_all()
+        params_as_dict['stop_on_first_trigger'] = True
+        result = run_all(**params_as_dict)
         self.assertEqual(result, [{'some_action_1': 'fooValue'}])
 
     def test_should_get_value(self):
@@ -45,7 +47,7 @@ class ActionsResultsClassTests(TestCase):
             }
         ]
         expected_message = 'Expected only one action to be executed.'
-        with self.assertRaisesRegex(InvalidRuleDefinition, expected_message):
+        with self.assertRaisesRegexp(InvalidRuleDefinition, expected_message):
             get_value(**params)
 
     def test_should_raise_exception_when_none_action_executed(self):
@@ -63,14 +65,14 @@ class ActionsResultsClassTests(TestCase):
             }
         ]
         expected_message = 'No rule executed or no action found in matching rule'
-        with self.assertRaisesRegex(InvalidRuleDefinition, expected_message):
+        with self.assertRaisesRegexp(InvalidRuleDefinition, expected_message):
             get_value(**params)
 
     def test_should_raise_exception_when_none_rule_triggered(self):
         params = self._get_params_for_run_all()
         params['rule_list'] = []
         expected_message = 'No rule executed or no action found in matching rule'
-        with self.assertRaisesRegex(InvalidRuleDefinition, expected_message):
+        with self.assertRaisesRegexp(InvalidRuleDefinition, expected_message):
             get_value(**params)
 
     @staticmethod
